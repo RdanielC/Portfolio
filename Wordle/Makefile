@@ -1,5 +1,5 @@
 CXX=g++
-CXXFLAGS=-Wall
+CXXFLAGS=-Wall -Werror -std=c++11
 game: game.o WordleGame.o
 	$(CXX) -o $@ $^
 clean:

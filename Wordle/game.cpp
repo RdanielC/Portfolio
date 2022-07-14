@@ -24,12 +24,11 @@ int main( int argc, char **argv )
 
   // read input
   int attempts = 0;
-  while ( cin && !game.over() )
-  {
+  // while ( cin && !game.over() ) {
     string input;
     getline(cin,input);
     cout << game.score(input) << endl;
     attempts++;
-  }
+  // }
   cout << attempts << " attempts" << endl;
 }

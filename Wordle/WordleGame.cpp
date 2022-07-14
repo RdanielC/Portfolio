@@ -33,16 +33,25 @@ void WordleGame::select_key(int index) {
 string WordleGame::score(const std::string& input) {
 	string score = "-----";
 	//bool multiple = false;
-	int num1;
-	int num2;
+	// int num1;
+	// int num2;
+
+	int repetitions = 0;
+	int allowed_repetitions;
+
+
 	for (unsigned int i = 0; i < input.size(); i++) {
+		allowed_repetitions = count(key.begin(), key.end(), input[i]);
 		for (unsigned int j = 0; j < key.size(); j++) {
 			if(i == j && key[j] == input[i]) {
 				score[i] = '*';
 			} else if (key[j] == input[i]){
-				num1 = count(input.begin(), input.end(), [](char c){return key[j] == c});
-				num2 = count(key.begin(), key.end(), [](char c){return input[i] == c});
-				if (num1 != num2) {score[i] = '-';} else {score[i] = '+';}
+				if(repetitions < allowed_repetitions) {
+					score[j] = '*';
+				}
+				// num1 = count(input.begin(), input.end(), [](char c){return key[j] == c});
+				// num2 = count(key.begin(), key.end(), [](char c){return input[i] == c});
+				// if (num1 != num2) {score[i] = '-';} else {score[i] = '+';}
 			}						
 			 
 		}
